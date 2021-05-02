@@ -1,9 +1,11 @@
 const express=require('express')
 const app=express()
 require('./db/conn')
-const {authRoutes}=require('./Routes/authRoutes')
 const {passport}=require('./passportConfig/passportSetUp')
 const session=require('express-session')
+
+const {authRoutes}=require('./Routes/authRoutes')
+const { placeRoutes } = require('./Routes/placeRoutes')
 
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
@@ -21,6 +23,8 @@ app.use(passport.session());
 app.set('view engine','hbs')
 
 app.use('/',authRoutes)
+app.use('/',placeRoutes)
+
 app.get("/google", passport.authenticate("google", {
     scope: ["profile", "email"],
     prompt: 'select_account'
