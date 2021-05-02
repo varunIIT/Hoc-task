@@ -1,5 +1,5 @@
 const authRoutes=require('express').Router()
-const {mailer}=require('../controllers/mailerSetUp.js/mailer')
+const {mailer}=require('../controllers/mailerSetUp/mailer')
 authRoutes.get('/',(req,res)=>{
     res.render('home')
 })
